@@ -1,5 +1,6 @@
 from src.vector_store import AnimeVectorStoreBuilder
 from src.recommender import AnimeRecommender
+from pipeline.build_pipeline import main
 from config.config import MODEL_NAME
 import os
 from dotenv import load_dotenv
@@ -26,5 +27,11 @@ class AnimeRecommendationPipeline:
         try:
             recommendation = self.recommender.get_recommendation(query=query)
             return recommendation
+        except Exception as e:
+            raise Exception(e)
+    
+    def build_database(self):
+        try:
+            main()
         except Exception as e:
             raise Exception(e)

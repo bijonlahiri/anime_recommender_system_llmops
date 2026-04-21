@@ -19,6 +19,11 @@ st.title("Anime Recommender System")
 
 query = st.text_input("Enter your anime preferences. E.g.: a light hearted anime in a school setting")
 
+if st.button("Build Database"):
+    with st.spinner("Building database..."):
+        pipeline.build_database()
+        st.write("Successfully built database")
+
 if query:
     with st.spinner("Fetching recommendations for you..."):
         response = pipeline.recommend(query=query)

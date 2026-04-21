@@ -16,9 +16,6 @@ class AnimeVectorStoreBuilder:
     
     def create_vector_store(self):
 
-        if os.path.exists(self.persist_dir):
-            shutil.rmtree(self.persist_dir)
-
         loader = CSVLoader(
             file_path=self.csv_path,
             encoding="utf-8",
